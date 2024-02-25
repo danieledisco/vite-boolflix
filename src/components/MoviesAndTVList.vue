@@ -17,11 +17,13 @@ export default {
             class="noOut">
             No Items found in Boolflix
         </div>
-        <div v-if="state.out_movie.length != 0" class="separator">
-            {{ state.out_movie.length }} Movies Found in Boolflix
-        </div>
-        <div v-if="state.out_movie.length == 0 && state.initial" class="separator">
-            No Movies in Boolflix
+        <div v-else>
+            <div v-if="state.out_movie.length != 0" class="separator">
+                {{ state.out_movie.length }} Movies Found in Boolflix
+            </div>
+            <div v-if="state.out_movie.length == 0 && state.initial" class="separator">
+                No Movies in Boolflix
+            </div>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-4" v-for="movie in state.out_movie">
@@ -54,7 +56,7 @@ export default {
         <div v-if="state.out_tv.length != 0" class="separator">
             {{ state.out_tv.length }} Series TV Found in Boolflix
         </div>
-        <div v-if="state.out_tv.length == 0 && state.initial" class="separator">
+        <div v-if="state.out_tv.length == 0 && state.out_movie.length != 0 && state.initial" class="separator">
             No Series in Boolflix
         </div>
         <div class="row">
@@ -99,10 +101,11 @@ export default {
     & .info {
         display: none;
         position: absolute;
-        top: 200Px;
-        left: 20px;
+        top: 10px;
+        left: 10px;
         background-color: black;
         color: var(--bflix-gray);
+        border: 2px solid var(--bflix-light);
     }
 
     & img:hover {
@@ -150,5 +153,9 @@ i {
     padding: 1rem;
     border: 2px solid var(--bflix-logo);
     border-radius: 5px;
+}
+
+li {
+    padding: 0.3rem 0;
 }
 </style>

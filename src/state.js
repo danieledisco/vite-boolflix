@@ -25,6 +25,7 @@ export const state = reactive({
 
     getMovieTV(url_movie, url_tv) {
         this.initial = true;
+        this.out_movie = [];
         axios.get(url_movie)
             .then(response => {
                 this.out_movie = response.data.results;
@@ -32,6 +33,7 @@ export const state = reactive({
             .catch(error => {
                 console.error(error);
             });
+        this.out_tv = [];
         axios.get(url_tv)
             .then(response => {
                 this.out_tv = response.data.results;
