@@ -28,7 +28,7 @@ export default {
                             <li>{{ tv.original_name }}</li>
                             <li class="caption">Overview:</li>
                             <li>{{ tv.overview }}</li>
-       <li v-if="tv.origin_country.length > 0" class="caption">Country: <span
+                            <li v-if="tv.origin_country.length > 0" class="caption">Country: <span
                                     v-bind:class="state.makeFlags(tv.origin_country[0])"></span> </li>
                             <li v-else class="caption">Country: <span
                                     v-bind:class="state.makeFlags(tv.original_language)"></span></li>
