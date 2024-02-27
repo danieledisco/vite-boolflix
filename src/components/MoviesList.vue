@@ -13,19 +13,21 @@ export default {
  
 <template>
     <div class="container">
-        <!-- La variabile state initial serve ad evitare la comparsa di non item found all'inizio dell'applicazione -->
-        <div v-if="(state.out_movie.length + state.out_tv.length == 0) && (state.stringSearch !== '' && (state.initial))"
-            class="noOut">
-            No Items found in Boolflix
-        </div>
-        <div v-else>
-            <!-- Appare in pagina quanti film sono stati trovati .... -->
-            <div v-if="state.out_movie.length != 0" class="separator">
-                {{ state.out_movie.length }} Movies Found in Boolflix
+        <div v-if="state.doResults">
+            <!-- La variabile state initial serve ad evitare la comparsa di non item found all'inizio dell'applicazione -->
+            <div v-if="(state.out_movie.length + state.out_tv.length == 0) && (state.stringSearch !== '' && (state.initial))"
+                class="noOut">
+                No Items found in Boolflix
             </div>
-            <!-- ... o se non ne sono stati trovati -->
-            <div v-if="state.out_movie.length == 0 && state.initial" class="separator">
-                No Movies in Boolflix
+            <div v-else>
+                <!-- Appare in pagina quanti film sono stati trovati .... -->
+                <div v-if="state.out_movie.length != 0" class="separator">
+                    {{ state.out_movie.length }} Movies Found in Boolflix
+                </div>
+                <!-- ... o se non ne sono stati trovati -->
+                <div v-if="state.out_movie.length == 0 && state.initial" class="separator">
+                    No Movies in Boolflix
+                </div>
             </div>
         </div>
         <div class="row">
@@ -136,6 +138,6 @@ i {
 }
 
 li {
-    padding: 0.3rem 0;
+    padding: 0.2rem 0;
 }
 </style>

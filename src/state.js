@@ -30,6 +30,7 @@ export const state = reactive({
     /* Variabile che serve ad evitare l'apparsa di no items found all'inizio dell'applicazione quando le lunghezze dei due array
         contenenti i risultati sono vuoti */
     initial: false,
+    doResults: false,
 
     getMovieTV(url_movie, url_tv) {
         /* Cambio variabile per far, eventualmente apparire No items found */
@@ -53,6 +54,12 @@ export const state = reactive({
             .catch(error => {
                 console.error(error);
             });
+        if (this.stringSearch === '') {
+            this.doResults = false
+        }
+        else {
+            this.doResults = true
+        }
     },
     compose_image_url(image) {
         let url;
@@ -71,6 +78,7 @@ export const state = reactive({
             - ceco  
             Poi si verifica se la sigla è presente nella lista delle bardiere riportate sopra e se c'è si associa altrimenti 
             si indica xx che corrisponde ad un rettangolo bianco*/
+        console.log('input ' + input);
         let lc = input.toLowerCase();
         let out;
         if (lc === 'en')

@@ -28,8 +28,10 @@ export default {
                             <li>{{ tv.original_name }}</li>
                             <li class="caption">Overview:</li>
                             <li>{{ tv.overview }}</li>
-                            <li class="caption">Country: <span v-bind:class="state.makeFlags(tv.origin_country[0])"></span>
-                            </li>
+       <li v-if="tv.origin_country.length > 0" class="caption">Country: <span
+                                    v-bind:class="state.makeFlags(tv.origin_country[0])"></span> </li>
+                            <li v-else class="caption">Country: <span
+                                    v-bind:class="state.makeFlags(tv.original_language)"></span></li>
                             <!-- Dopo aver riportato il voto medio da 10 a 5 si effettua un loop per inserire le stelle piene 
                                          e poi un loop per inseire le stelle vuote per un totale di 5 -->
                             <li class="caption">Rate:
@@ -111,6 +113,6 @@ i {
 }
 
 li {
-    padding: 0.3rem 0;
+    padding: 0.2rem 0;
 }
 </style>
